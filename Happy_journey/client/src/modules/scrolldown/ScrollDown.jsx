@@ -1,7 +1,8 @@
 import React from 'react';
 import Home from '../scrolldown/Home';
 import TopDestinations from './TopDestinations';
-import Contact from '../scrolldown/Contact';
+import Weather from './Weather';
+import ContactUs from './Contact';
 
 
 function ScrollDown() {
@@ -13,8 +14,11 @@ function ScrollDown() {
       <section id="top-destinations" style={{ height: 'auto' }}>
         <TopDestinations />
       </section>
+      <section id="weather" style={{ height: 'auto' }}>
+        <Weather />
+      </section>
       <section id="contact" style={{ height: 'auto' }}>
-        <Contact />
+        <ContactUs />
       </section>
     </div>
   );

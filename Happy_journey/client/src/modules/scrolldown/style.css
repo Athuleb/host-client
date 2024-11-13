@@ -32,7 +32,7 @@
 
   @keyframes callto {
     0%{opacity: 0;}
-    50%{opacity: 80%;}
+    35%{opacity: 90%;}
     100%{opacity: 100%;}
   }
   .Call-to-Action{
@@ -40,3 +40,28 @@
     animation-timeline: view();
     
   }
+  .dest-card:hover{
+    opacity: 100%;
+    cursor: pointer;
+  }
+
+.blur {
+  filter: blur(25px); 
+  pointer-events: none; 
+  transition: filter 0.3s; 
+}
+
+@keyframes slide{
+  0%{
+    transform: translateX(100%);
+    opacity: 0%;
+  }
+  100%{
+    transform: translateX(0%);
+    opacity: 100%;
+  }
+}
+
+.slide-anim{
+  animation: slide 1.5s ease-in forwards;
+}

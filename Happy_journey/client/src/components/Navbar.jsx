@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -43,7 +43,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   color: 'black',
-  borderRadius:'10px'
+  borderRadius: '10px'
 }));
 
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
@@ -62,13 +62,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
+
 export default function StylishToolbar() {
   const navigate = useNavigate()
+  const [search, setSearch] = useState('')
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    console.log("search===", search);
+    navigate(`/search?query=${search}`)
+  }
   return (
     <StyledAppBar position="fixed" sx={{ width: '100vw', margin: '15px 0px', borderRadius: '20px' }} className=''>
       <Toolbar>
-        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ color: 'black', mr: 2 }}>
-          <HomrIcon onClick={()=> (window.location.assign('/#home'))}/>
+        <IconButton edge="start" color="inherit" aria-label="menu" sx={{ color: 'black', mr: 2 }} onClick={() => (window.location.assign('/#home'))}>
+          <HomrIcon />
         </IconButton>
         <Typography variant="h6" noWrap component="div" sx={{ flexGrow: 1, fontFamily: 'verdana', color: 'black' }}>
           Happy Journey
@@ -80,7 +88,7 @@ export default function StylishToolbar() {
             </a>
           </ListItem>
           <ListItem sx={{ padding: 0 }}>
-            <a href="/#top-destinations" style={{ textDecoration: 'none', color: 'black',width:'10rem' }}>
+            <a href="/#top-destinations" style={{ textDecoration: 'none', color: 'black', width: '10rem' }}>
               <Button color="inherit">Top Destinations</Button>
             </a>
           </ListItem>
@@ -88,18 +96,19 @@ export default function StylishToolbar() {
             <Button color="inherit" onClick={() => navigate('/travel-scope')}>TravelScope</Button>
           </ListItem>
           <ListItem sx={{ padding: 0 }}>
-            <a href="/#contact" style={{ textDecoration: 'none', color: 'black' }}>
-              <Button color="inherit">Contact</Button>
+            <a href="/#weather" style={{ textDecoration: 'none', color: 'black' }}>
+              <Button color="inherit">Weather</Button>
             </a>
           </ListItem>
         </List>
-
-        <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase placeholder="Search…" inputProps={{ 'aria-label': 'search' }} />
-        </Search>
+        <form onSubmit={handleSearch}>
+          <Search >
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase placeholder="Search Location…" value={search} onChange={(e) => setSearch(e.target.value)} inputProps={{ 'aria-label': 'search' }} />
+          </Search>
+        </form>
       </Toolbar>
     </StyledAppBar>
   );

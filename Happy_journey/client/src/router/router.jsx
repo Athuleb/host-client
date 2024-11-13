@@ -4,6 +4,7 @@ import Mainlayout from "../layout/Mainlayout"
 import TravelScope from "../modules/destinations/TravelScope"
 import ScrollDown from "../modules/scrolldown/ScrollDown"
 import Explore from "../modules/explore/Explore"
+import SearchResult from "../Search/SearchResult"
 
 
 
@@ -25,6 +26,10 @@ const route = createBrowserRouter([
             {
                 path:'/explore',
                 element:<Explore/>
+            },
+            {
+                path:'/search',
+                element:<SearchResult/>
             }
 
         ]
